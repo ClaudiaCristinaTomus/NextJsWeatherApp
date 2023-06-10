@@ -22,7 +22,8 @@ const SearchPage: React.FC = () =>{
     };
     return(
         <div>
-            <SearchInput onSearch={handleSearch} /><WeatherForecast/>
+            <SearchInput onSearch={handleSearch} />
+            {forecast && <WeatherForecast forecast={forecast}/>}
         </div>
     );
 };

@@ -9,12 +9,19 @@ const SearchInput:React.FC<SearchInputProps>=({onSearch})=>{
 
     const handleInputChange=(event:React.ChangeEvent<HTMLInputElement>)=>{
         setCity(event.target.value);
-    }
+    };
+
+    const handleSubmit=(event:React.FormEvent)=>{
+        event.preventDefault();
+        if(city.trim()){
+            onSearch(city.trim());
+        }
+    };
 
     return(
         <div className="flex justify-center items-center flex-col mt-32">
             <h1 className="text-center text-2xl mb-4">Find Weather</h1>
-            <form className="w-full max-w-md mt-10">
+            <form onSubmit={handleSubmit} className="w-full max-w-md mt-10">
                 <div className="flex items-center border-b border-gray-300 py-2">
                     <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
                     type="text"

@@ -1,8 +1,22 @@
+"use client"
 import React from 'react'
+import Link from 'next/link'
+import { NavLink } from 'react-router-dom';
 
-const Navbar = () => {
+interface NavLink {
+  label: string;
+  url: string;
+}
+
+const navLinks : NavLink[] = [
+  { label: "Today's weather", url: "/" },
+  { label: "Find Weather", url: "/search" }, 
+  { label: "get in touch", url: "/contact" }
+];
+
+const Navbar: React.FC = () => {
   return (
-    <div>Navbar</div>
+    <nav className='bg-gray-800 py-4'
   )
 }
 

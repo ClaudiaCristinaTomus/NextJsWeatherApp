@@ -9,14 +9,14 @@ const fetchWeatherData= async(city:string): Promise<{currentWeather:CurrentWeath
     const currentWeatherResponse= await fetch(`${baseUrl}/weather?q=${city}&units=metric&appid=${apiKey}`);
     const currentWeatherData=await currentWeatherResponse.json();
 
-    if(currentWeatherData.cod !== 200){
+    if(currentWeatherData.cod !== "200"){
         throw new Error(currentWeatherData.message);
     }
 
     const forecastForecast = await fetch((`${baseUrl}/weather?q=${city}&units=metric&appid=${apiKey}`));
     const forecastData=await forecastForecast.json();
 
-    if(forecastData.cod !== 200){
+    if(forecastData.cod !== "200"){
         throw new Error(currentWeatherData.message);
     }
 
@@ -33,7 +33,7 @@ const fetchWeatherData= async(city:string): Promise<{currentWeather:CurrentWeath
     .slice(0,5)
     .map((item:any)=>({
         date:new Date(item.dt_txt),
-        temperature:item.main_temp,
+        temperature:item.main.temp,
         description:item.weather[0].description,
         icon:item.weather[0].icon,
     }));
